@@ -1,0 +1,6 @@
+0 156 @ FBIS3-1001 f:\assign\data\FBIS3-1001
+1 270 @ FBIS3-10010 f:\assign\data\FBIS3-10010
+2 156 @ FBIS3-10012 f:\assign\data\FBIS3-10012
+3 267 @ FBIS3-10026 f:\assign\data\FBIS3-10026
+4 260 @ FBIS3-10030 f:\assign\data\FBIS3-10030
+5 932 @ FBIS3-10033 f:\assign\data\FBIS3-10033

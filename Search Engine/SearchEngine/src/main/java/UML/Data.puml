@@ -1,0 +1,88 @@
+@startuml
+package "Data" #FFF8DC{
+class Corpus
+class Document
+class PostTextPreprocessor
+class Query
+class Resources
+class WordMetadata
+class SearchResult
+
+Corpus -- Document
+Corpus - WordMetadata
+PostTextPreprocessor -- WordMetadata
+}
+
+
+class Corpus {
+
+<plain>- fileID_DocumentMap: HashMap<Integer, Document>
+<plain>- invertedIndex: HashMap<String, List<WordMetadata>>
+<plain>- documentLengths: HashMap<Integer,Double>
+
+<plain>+ Corpus() // Constructor
+<plain>- parseFileTxt(): HashMap<Integer,Document>
+<plain>- initInvertedIndex(): void
+<plain>- calculateDocumentLength(): void
+<plain>+ getDocumentLength(): HashMap<Integer,Double>
+<plain>+ getInverseDocumentFrequency(String): double
+<plain>+ getDocuments(): ArrayList<Document>
+<plain>+ getInvertedIndex(): HashMap<String, List<WordMetadata>>
+<plain>+ readInvertedFile(File): HashMap<String, List<WordMetadata>>
+' <plain>+ HashMap<String, Integer> sumTermFrequencyNormalization()
+' <plain>+ HashMap<String, Integer> maxTermFrequencyNormalization()
+<plain>+ getTRECFileID(int): String
+}
+
+class Document{
+
+<plain>- int fileID    // Actual order of how the file information are listed in file.txt
+<plain>- int docLength //Document Word Count
+<plain>- String docID  // Actual Record ID for TREC Programs
+<plain>- String path   // Path to the file for TREC Programs
+
+<plain>+ Document(int, int, String, String) // Constructor
+}
+
+class PostTextPreprocessor{
+
+<plain>+ main(String[] args): void
+<plain>+ preprocessPostTxt(String): HashMap<String,List<WordMetadata>>
+<plain>+ wordDictToFile(HashMap<String,List<WordMetadata>>): void
+}
+
+class Query {
+<plain>+ queryID: String
+<plain>+ query: ArrayList<String>
+<plain>+ Query(String, String)
+}
+
+class Resources {
+<plain>+ static final String postPath
+<plain>+ static final String invertedFilePath
+<plain>+ static final String filePath
+<plain>+ static final String queryFilePath
+<plain>+ static final String queryTDNFilePath
+
+}
+
+class WordMetadata {
+
+<plain>+ fileID: int
+<plain>+ occurrence: int
+<plain>+ wordPositions: ArrayList<Integer>
+
+<plain>+ WordMetadata(int, int, ArrayList<Integer>)
+
+}
+
+class SearchResult {
+<plain>+ fileID: int
+<plain>+ score: double
+
+<plain>+ SearchResult(int, double)
+<plain>+ getFileID(): int
+<plain>+ getScore(): double
+
+}
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+
+'class BooleanModel {
+'<plain>- Corpus corpus;
+'<plain>- static List<String> operatorList
+'<plain>+ BooleanModel(Corpus)
+'<plain>- List<WordMetadata> getTermDocuments(String term)
+'<plain>+ List<SearchResult> query(String searchTerm)
+'<plain>- static List<String> notCheck(List<String> words)
+'
+'
+'}
+
+
+class VectorSpaceModel {
+
+<plain>- Corpus corpus;
+
+<plain>+ VectorSpaceModel(Corpus) // Constructor
+<plain>+ getSearchResults(ArrayList<String> query): ArrayList<SearchResult> 
+<plain>+ getTopSearchResults(ArrayList<String> query): SearchResult[] 
+<plain>- getTermDotProductRanking(String term): HashMap<Integer,Double>
+
+}
+'
+'class FuzzyBooleanModel {
+'
+'
+'}
+'
+'enum BooleanOperator {
+'    AND, OR, NOT, LP, RP, LITERAL;
+'    BooleanOperator parse(String)
+'}
+
+@enduml
